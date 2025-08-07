@@ -5,56 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Room Details</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #e0f2fe, #f0f9ff);
+    }
+  </style>
 </head>
-<body class="bg-purple-50 min-h-screen flex items-center justify-center px-4">
+<body class="min-h-screen flex items-center justify-center px-4 py-10">
 
-  <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-3xl">
-    <h2 class="text-3xl font-bold text-purple-700 mb-6 text-center">Your Room Details</h2>
+  <div class="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-4xl border border-blue-200">
+    <h2 class="text-4xl font-extrabold text-blue-800 mb-8 text-center tracking-wide">Your Room Details</h2>
     
     <!-- Student's Room Info -->
-    <div class="mb-10 border border-purple-200 p-5 rounded-lg bg-purple-50">
-      <p class="text-lg"><strong>Room Number:</strong> B-204</p>
-      <p class="text-lg"><strong>Hostel Name:</strong> Sunrise Hostel</p>
-      <p class="text-lg"><strong>Floor:</strong> 2nd Floor</p>
-      <p class="text-lg"><strong>Capacity:</strong> 3</p>
-      <p class="text-lg"><strong>Vacancy:</strong> 0</p>
+    <div class="mb-12 bg-gradient-to-br from-blue-100 to-blue-50 border-l-4 border-blue-400 p-6 rounded-xl shadow-md">
+      <div class="space-y-2 text-lg text-gray-800">
+        <p><strong>Room Number:</strong> <span class="text-blue-800 font-medium">B-204</span></p>
+        <p><strong>Hostel Name:</strong> <span class="text-blue-800 font-medium">Sunrise Hostel</span></p>
+        <p><strong>Floor:</strong> <span class="text-blue-800 font-medium">2nd Floor</span></p>
+        <p><strong>Capacity:</strong> <span class="text-blue-800 font-medium">3</span></p>
+        <p><strong>Vacancy:</strong> <span class="text-red-600 font-semibold">0</span></p>
+      </div>
     </div>
 
     <!-- Available Rooms Table -->
-    <h3 class="text-2xl font-semibold text-purple-600 mb-4">Available Rooms</h3>
-    <div class="overflow-x-auto">
-      <table class="min-w-full border border-purple-200 text-center rounded-lg overflow-hidden">
-        <thead class="bg-purple-100">
-          <tr>
-            <th class="py-2 px-4 border-b">Hostel</th>
-            <th class="py-2 px-4 border-b">Room No</th>
-            <th class="py-2 px-4 border-b">Floor</th>
-            <th class="py-2 px-4 border-b">Capacity</th>
-            <th class="py-2 px-4 border-b">Vacancy</th>
+    <h3 class="text-3xl font-semibold text-blue-700 mb-4">Available Rooms</h3>
+    <div class="overflow-x-auto rounded-lg border border-blue-200 shadow-md">
+      <table class="min-w-full text-center">
+        <thead class="bg-blue-200 text-blue-900">
+          <tr class="text-md">
+            <th class="py-3 px-5">Hostel</th>
+            <th class="py-3 px-5">Room No</th>
+            <th class="py-3 px-5">Floor</th>
+            <th class="py-3 px-5">Capacity</th>
+            <th class="py-3 px-5">Vacancy</th>
           </tr>
         </thead>
-        <tbody class="bg-white">
-          <!-- Sample data rows -->
-          <tr>
-            <td class="py-2 px-4 border-b">Sunrise Hostel</td>
-            <td class="py-2 px-4 border-b">B-205</td>
-            <td class="py-2 px-4 border-b">2nd</td>
-            <td class="py-2 px-4 border-b">3</td>
-            <td class="py-2 px-4 border-b">1</td>
+        <tbody class="bg-white text-gray-700">
+          <tr class="hover:bg-blue-50 transition">
+            <td class="py-3 px-5">Sunrise Hostel</td>
+            <td class="py-3 px-5">B-205</td>
+            <td class="py-3 px-5">2nd</td>
+            <td class="py-3 px-5">3</td>
+            <td class="py-3 px-5">1</td>
           </tr>
-          <tr>
-            <td class="py-2 px-4 border-b">Moonlight Hostel</td>
-            <td class="py-2 px-4 border-b">A-101</td>
-            <td class="py-2 px-4 border-b">1st</td>
-            <td class="py-2 px-4 border-b">2</td>
-            <td class="py-2 px-4 border-b">2</td>
+          <tr class="hover:bg-blue-50 transition">
+            <td class="py-3 px-5">Moonlight Hostel</td>
+            <td class="py-3 px-5">A-101</td>
+            <td class="py-3 px-5">1st</td>
+            <td class="py-3 px-5">2</td>
+            <td class="py-3 px-5">2</td>
           </tr>
-          <tr>
-            <td class="py-2 px-4 border-b">Galaxy Hostel</td>
-            <td class="py-2 px-4 border-b">G-310</td>
-            <td class="py-2 px-4 border-b">3rd</td>
-            <td class="py-2 px-4 border-b">4</td>
-            <td class="py-2 px-4 border-b">3</td>
+          <tr class="hover:bg-blue-50 transition">
+            <td class="py-3 px-5">Galaxy Hostel</td>
+            <td class="py-3 px-5">G-310</td>
+            <td class="py-3 px-5">3rd</td>
+            <td class="py-3 px-5">4</td>
+            <td class="py-3 px-5">3</td>
           </tr>
         </tbody>
       </table>
