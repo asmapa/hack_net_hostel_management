@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hostel Allocation Optimizer</title>
   <style>
-    /* Reset and body styles */
     * {
       margin: 0;
       padding: 0;
@@ -13,118 +12,122 @@
     }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f3f6fc;
-      color: #333;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
     }
 
-    /* Navbar */
     .navbar {
+      background-color: #003366;
+      color: white;
+      padding: 16px 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
-      background: linear-gradient(to right, #003366, #0059b3);
-      color: white;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     .navbar h1 {
       font-size: 24px;
     }
 
-    .nav-buttons a {
-      margin-left: 15px;
+    .nav-buttons {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-buttons a,
+    .dropbtn {
       text-decoration: none;
-      padding: 8px 16px;
-      background: white;
+      background-color: white;
       color: #003366;
+      padding: 10px 20px;
       border-radius: 20px;
       font-weight: 600;
-      transition: background 0.3s ease;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+      border: none;
     }
 
-    .nav-buttons a:hover {
-      background: #cce6ff;
+    .nav-buttons a:hover,
+    .dropbtn:hover {
+      background-color: #cce6ff;
     }
 
-    /* Hero section */
+    /* Dropdown styles */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .dropdown-content a {
+      color: #003366;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      font-weight: 500;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #cce6ff;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+      background-color: #cce6ff;
+    }
+
     .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       text-align: center;
-      padding: 100px 20px 80px;
-      background: linear-gradient(to right, #e6f2ff, #ffffff);
+      padding: 100px 20px;
+      color: #003366;
     }
 
     .hero h2 {
-      font-size: 42px;
-      color: #003366;
-      margin-bottom: 15px;
+      font-size: 48px;
+      margin-bottom: 20px;
     }
 
     .hero p {
-      font-size: 18px;
+      font-size: 20px;
       max-width: 600px;
-      line-height: 1.6;
+      margin: 0 auto;
     }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #003366;
-      color: white;
-      font-size: 14px;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-buttons {
-        margin-top: 10px;
-      }
-
-      .hero h2 {
-        font-size: 32px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-    }
-
   </style>
 </head>
 <body>
-
   <!-- Navbar -->
   <div class="navbar">
     <h1>Hostel Allocation Optimizer</h1>
     <div class="nav-buttons">
-      <a href="#">Login</a>
-      <a href="#">Register</a>
+      <div class="dropdown">
+        <button class="dropbtn">Login</button>
+        <div class="dropdown-content">
+          <a href="login-admin.html">Admin Login</a>
+          <a href="login.html">Student Login</a>
+        </div>
+      </div>
+      <a href="signup.html">Register</a>
     </div>
   </div>
 
   <!-- Hero Section -->
   <div class="hero">
-    <h2>Welcome to HostelEase</h2>
-    <p>
-      Experience a smarter way to manage hostel allocations — fair, transparent,
-      and efficient. Built for students and admins to make room assignments stress-free.
-    </p>
+    <h2>Welcome to Hostel Allocation System</h2>
+    <p>Optimize your hostel management with ease. Choose your role and get started now.</p>
   </div>
-
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 HostelEase | Designed by Hack.Net
-  </footer>
-
 </body>
 </html>
