@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hostel Allocation Optimizer</title>
   <style>
     * {
@@ -27,12 +28,12 @@
       left: 0;
       height: 100%;
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.65);
+      background-color: rgba(0, 0, 0, 0.6);
       z-index: -1;
     }
 
     .navbar {
-      background-color: rgba(0, 51, 102, 0.9);
+      background-color: rgba(10, 70, 130, 0.95);
       padding: 16px 32px;
       display: flex;
       justify-content: space-between;
@@ -47,24 +48,28 @@
     .nav-buttons {
       display: flex;
       gap: 16px;
+      align-items: center;
     }
 
     .nav-buttons a,
     .dropbtn {
       text-decoration: none;
       background-color: white;
-      color: #003366;
-      padding: 10px 18px;
+      color: #0A4682;
+      padding: 10px 20px;
       border-radius: 25px;
       font-weight: 600;
       transition: background-color 0.3s ease, transform 0.2s ease;
       border: none;
       cursor: pointer;
+      display: inline-block;
+      min-width: 140px;
+      text-align: center;
     }
 
     .nav-buttons a:hover,
     .dropbtn:hover {
-      background-color: #a3d5ff;
+      background-color: #cfe8ff;
       transform: translateY(-2px);
     }
 
@@ -72,14 +77,19 @@
       position: relative;
     }
 
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
     .dropdown-content {
       display: none;
       position: absolute;
-      top: 100%
+      top: 100%;
+      left: 0;
       background-color: white;
       min-width: 160px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      z-index: 1;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 10;
       border-radius: 10px;
     }
 
@@ -88,33 +98,74 @@
       padding: 12px 16px;
       text-decoration: none;
       display: block;
+      font-weight: 500;
     }
 
     .dropdown-content a:hover {
       background-color: #d9f0ff;
     }
 
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
     .hero {
       text-align: center;
-      padding: 120px 20px 60px;
+      padding: 100px 20px 60px;
       color: white;
     }
 
     .hero h2 {
-      font-size: 44px;
-      margin-bottom: 16px;
+      font-size: 42px;
+      margin-bottom: 20px;
       text-shadow: 1px 1px 3px #000;
     }
 
     .hero p {
-      font-size: 20px;
-      max-width: 600px;
+      font-size: 18px;
+      max-width: 650px;
       margin: 0 auto;
       text-shadow: 1px 1px 2px #000;
+    }
+
+    .features {
+      text-align: center;
+      margin-top: 40px;
+      padding: 0 20px;
+    }
+
+    .features h3 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #e0e0e0;
+    }
+
+    .feature-boxes {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .feature {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 12px;
+      width: 260px;
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature h4 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .feature p {
+      font-size: 14px;
+      color: #ddd;
     }
 
     .footer {
@@ -122,11 +173,23 @@
       bottom: 20px;
       width: 100%;
       text-align: center;
-      color: #ddd;
-      font-size: 14px;
+      color: #ccc;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h2 {
+        font-size: 32px;
+      }
+
+      .feature-boxes {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Navbar -->
@@ -134,9 +197,9 @@
     <h1>Hostel Allocation Optimizer</h1>
     <div class="nav-buttons">
       <div class="dropdown">
-        <button class="dropbtn">Login</button>
+        <div class="dropbtn">Login</div>
         <div class="dropdown-content">
-          <a href="Admin/admin_login.html">Admin Login</a>
+          <a href="Admin/room.html">Admin Login</a>
           <a href="login.html">Student Login</a>
         </div>
       </div>
@@ -146,11 +209,32 @@
 
   <!-- Hero Section -->
   <div class="hero">
-    <h2>Welcome to Hostel Allocation System</h2>
-    <p>Optimize your hostel management with ease. Choose your role and get started now.</p>
+    <h2>Welcome to HostelEase</h2>
+    <p>Efficiently manage hostel rooms and student preferences. Choose your role and begin your journey with us.</p>
   </div>
 
+  <!-- Features Section -->
+  <div class="features">
+    <h3>Why Use Our System?</h3>
+    <div class="feature-boxes">
+      <div class="feature">
+        <h4>Smart Allocation</h4>
+        <p>Automatically assigns rooms based on preferences and availability.</p>
+      </div>
+      <div class="feature">
+        <h4>Easy Room Exchange</h4>
+        <p>Request and manage room changes with consent and approval workflows.</p>
+      </div>
+      <div class="feature">
+        <h4>Admin Dashboard</h4>
+        <p>Manage students, rooms, and allocations all from one place.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
   <div class="footer">© 2025 Hostel Allocation System. All rights reserved.</div>
 
 </body>
+
 </html>

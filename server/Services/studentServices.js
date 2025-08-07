@@ -41,3 +41,22 @@ export const createStudent = async (studentData) => {
     return rows[0]; 
 };
 
+
+
+
+
+export const loginCheck = async (email, password) => {
+    try {
+        const { rows } = await query(
+            `SELECT * FROM students WHERE email = $1 AND password = $2`,
+            [email, password]
+        );
+
+        return rows.length > 0 ? rows[0] : null;
+
+    } catch (err) {
+        console.error("🔍 Error in loginCheck service:", err);
+        throw err;
+    }
+};
+

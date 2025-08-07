@@ -58,7 +58,7 @@
 
       <!-- Social Icons -->
       <div class="text-center mt-6">
-        <span class="text-sm">Or login with</span>
+        
         <div class="flex justify-center gap-4 mt-2 text-white text-xl">
           <a href="#" title="Login with Google"><i class="fab fa-google hover:text-red-400"></i></a>
           <a href="#" title="Login with Facebook"><i class="fab fa-facebook-f hover:text-blue-500"></i></a>
@@ -68,31 +68,46 @@
     </form>
   </div>
 
-  <!-- JavaScript for validation -->
   <script>
-  function validateForm() {
+  async function validateForm(event) {
+    event.preventDefault(); // Stop default form submission
+
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
 
-    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-    const passwordPattern = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
-
-    if (!emailPattern.test(email)) {
-      alert("Please enter a valid email address.");
+    if (!email || !password) {
+      alert("🚨 Please enter both email and password!");
       return false;
     }
 
-    if (!passwordPattern.test(password)) {
-      alert("Password must be at least 8 characters long, contain at least one uppercase letter and one number.");
-      return false;
+    try {
+      const response = await fetch("http://localhost:3000/student/loginCheck", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("✅ Login successful! Welcome back, " + data.student.name + " 🥳");
+        window.location.href = "student/student_dashboard.html";
+      } else {
+        alert("❌ Login failed: " + data.message);
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("😵 Oops! Server not responding or something went wrong.");
     }
 
-    // ✅ Redirect on successful login
-    alert("Login successful!");
-    window.location.href = "student/student_dashboard.html";
-    return false; // prevent form submission
+    return false;
   }
+
+  document.getElementById("loginForm").addEventListener("submit", validateForm);
 </script>
+
 
 </body>
 
