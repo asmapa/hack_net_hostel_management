@@ -195,11 +195,13 @@
     </div>
   </div>
 
-  <!-- Student Section -->
-  <div class="section" id="studentSection">
-    <h2>Student Management</h2>
-    <p>Feature under development...</p>
+<div class="section" id="studentSection">
+  <h2>Student Management</h2>
+  <div id="studentContent">
+    <p>Loading students...</p>
   </div>
+</div>
+
 
   <!-- Approval Section -->
   <div class="section" id="approvalSection">
@@ -240,3 +242,75 @@
 
 </body>
 </html>
+
+
+
+<script>
+  function showSection(sectionId) {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(sec => sec.style.display = 'none');
+    const currentSection = document.getElementById(sectionId + 'Section');
+    currentSection.style.display = 'block';
+
+    // Load student data only when the student section is shown
+    if (sectionId === 'student') {
+      loadStudents();
+    }
+  }
+
+  async function loadStudents() {
+    const container = document.getElementById('studentContent');
+    container.innerHTML = `<p>Loading students...</p>`;
+
+    try {
+      const response = await fetch('http://localhost:3000/student/getstudents');
+      const students = await response.json();
+
+      if (!Array.isArray(students)) throw new Error('Invalid data received');
+
+      if (students.length === 0) {
+        container.innerHTML = `<p>No students found.</p>`;
+        return;
+      }
+
+      let table = `
+        <table border="1" cellpadding="10" cellspacing="0" style="width:100%; border-collapse: collapse;">
+          <thead>
+            <tr style="background-color: var(--accent);">
+              <th>Student ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Contact</th>
+              <th>Gender</th>
+              <th>Branch</th>
+              <th>Year</th>
+              <th>Room</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      students.forEach(student => {
+        table += `
+          <tr>
+            <td>${student.student_id || ''}</td>
+            <td>${student.name || ''}</td>
+            <td>${student.email || ''}</td>
+            <td>${student.contact_num || ''}</td>
+            <td>${student.gender || ''}</td>
+            <td>${student.branch || ''}</td>
+            <td>${student.year || ''}</td>
+            <td>${student.room_no || '-'}</td>
+          </tr>
+        `;
+      });
+
+      table += '</tbody></table>';
+      container.innerHTML = table;
+
+    } catch (err) {
+      console.error(err);
+      container.innerHTML = `<p style="color: red;">Failed to load student data 😢</p>`;
+    }
+  }
+</script>
