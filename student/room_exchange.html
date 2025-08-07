@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Room Exchange Request</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 min-h-screen font-sans">
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white py-4 shadow-md">
+    <div class="max-w-4xl mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-xl sm:text-2xl font-semibold">Room Exchange Request</h1>
+      <a href="student_dashboard.html" class="text-sm bg-white text-blue-600 px-4 py-1.5 rounded hover:bg-blue-100 transition">Back</a>
+    </div>
+  </header>
+
+  <!-- Form -->
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <form class="bg-white p-8 rounded-lg shadow-md space-y-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <!-- Hostel ID -->
+        <div>
+          <label class="block font-medium mb-1">Hostel ID</label>
+          <input type="text" name="hostel_id" required class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"/>
+        </div>
+
+        <!-- Student ID -->
+        <div>
+          <label class="block font-medium mb-1">Student ID</label>
+          <input type="text" name="student_id" required class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"/>
+        </div>
+
+        <!-- Student Name -->
+        <div>
+          <label class="block font-medium mb-1">Student Name</label>
+          <input type="text" name="student_name" required class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"/>
+        </div>
+
+        <!-- Current Room No -->
+        <div>
+          <label class="block font-medium mb-1">Current Room No</label>
+          <input type="text" name="current_room" required class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"/>
+        </div>
+
+        <!-- Current Block -->
+        <div>
+          <label class="block font-medium mb-1">Current Block</label>
+          <input type="text" name="current_block" required class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"/>
+        </div>
+
+        <!-- Desired Room No -->
+        <div>
+          <label class="block font-medium mb-1">Desired Room No</label>
+          <input type="text" name="desired_room" required class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"/>
+        </div>
+      </div>
+
+      <!-- Reason for Exchange -->
+      <div>
+        <label class="block font-medium mb-1">Reason for Exchange</label>
+        <textarea name="reason" rows="4" required class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+      </div>
+
+      <!-- Consent Upload -->
+      <div>
+        <label class="block font-medium mb-1">Consent Document (PDF/Image)</label>
+        <input type="file" name="consent_file" accept=".pdf,.jpg,.jpeg,.png" required class="w-full"/>
+      </div>
+
+      <!-- Date -->
+      <div>
+        <label class="block font-medium mb-1">Date</label>
+        <input type="date" name="request_date" required class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"/>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex justify-end space-x-4 pt-4">
+        <button type="reset" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">Reset</button>
+        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Submit Request</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-blue-800 mt-10 pb-4">
+    &copy; 2025 Hostel Management System
+  </footer>
+
+</body>
+</html>
