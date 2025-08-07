@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Support – Student Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-sky-50 min-h-screen font-sans text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-sky-600 text-white py-4 shadow-md">
+    <div class="max-w-4xl mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-lg sm:text-xl font-semibold">📩 Support</h1>
+      <a href="student_dashboard.html" class="text-sm bg-white text-sky-700 px-4 py-1.5 rounded hover:bg-sky-100 transition">Back</a>
+    </div>
+  </header>
+
+  <!-- Support Form -->
+  <main class="max-w-3xl mx-auto px-4 py-10">
+    <h2 class="text-2xl font-bold text-sky-700 text-center mb-8">Submit a Support Request</h2>
+
+    <form action="https://formspree.io/f/mldlodpj" method="POST" class="bg-white p-6 rounded-lg shadow-md space-y-5">
+      <!-- Name -->
+      <div>
+        <label for="name" class="block text-sm font-medium text-sky-800">Your Name</label>
+        <input type="text" id="name" name="name" required class="w-full mt-1 px-4 py-2 border border-sky-200 rounded focus:outline-none focus:ring-2 focus:ring-sky-400" />
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-sky-800">Email</label>
+        <input type="email" id="email" name="email" required class="w-full mt-1 px-4 py-2 border border-sky-200 rounded focus:outline-none focus:ring-2 focus:ring-sky-400" />
+      </div>
+
+      <!-- Issue Type -->
+      <div>
+        <label for="type" class="block text-sm font-medium text-sky-800">Issue Type</label>
+        <select id="type" name="type" required class="w-full mt-1 px-4 py-2 border border-sky-200 rounded focus:outline-none focus:ring-2 focus:ring-sky-400">
+          <option value="">Select an issue</option>
+          <option value="Room Allocation Problem">Room Allocation Problem</option>
+          <option value="Application Status">Application Status</option>
+          <option value="Technical Issue">Technical Issue</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <!-- Message -->
+      <div>
+        <label for="message" class="block text-sm font-medium text-sky-800">Message</label>
+        <textarea id="message" name="message" rows="5" required class="w-full mt-1 px-4 py-2 border border-sky-200 rounded focus:outline-none focus:ring-2 focus:ring-sky-400" placeholder="Describe your issue..."></textarea>
+      </div>
+
+      <!-- Submit -->
+      <div class="text-center">
+        <button type="submit" class="bg-sky-500 hover:bg-sky-600 text-white px-6 py-2 rounded-md shadow-sm transition">Submit Request</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-sky-700 mt-10 pb-4">
+    &copy; 2025 Hostel Management System
+  </footer>
+
+</body>
+</html>
