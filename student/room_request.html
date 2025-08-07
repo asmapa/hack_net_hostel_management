@@ -5,21 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Room Request</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Optional: hide the checkbox list when clicking outside */
+    .dropdown-checkbox:focus-within .dropdown-menu {
+      display: block;
+    }
+  </style>
 </head>
 <body class="bg-blue-50 flex justify-center items-center min-h-screen">
 
   <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-lg">
     <h2 class="text-2xl font-semibold text-blue-700 mb-6">Room Request Form</h2>
     <form class="space-y-4">
-      <input type="text" placeholder="Your Roll Number" class="w-full border p-3 rounded-lg" required>
+      <input type="text" placeholder="Your Student Id" class="w-full border p-3 rounded-lg" required>
       <input type="text" placeholder="Preferred Block" class="w-full border p-3 rounded-lg">
-      <input type="text" placeholder="Preferred Roommate's Roll No." class="w-full border p-3 rounded-lg">
-      <select class="w-full border p-3 rounded-lg">
-        <option disabled selected>Select Amenity</option>
-        <option>WiFi</option>
-        <option>AC</option>
-        <option>Geyser</option>
-      </select>
+      <input type="text" placeholder="Preferred Roommate's Student Id" class="w-full border p-3 rounded-lg">
+
+      <!-- Custom Multi-select Dropdown -->
+      <div class="relative dropdown-checkbox">
+        <button type="button" onclick="toggleDropdown()" class="w-full border p-3 rounded-lg text-left bg-white">
+          <span id="selected-amenities">Select Amenities</span>
+        </button>
+        <div id="dropdown-menu" class="dropdown-menu absolute w-full mt-2 bg-white border rounded-lg shadow-lg z-10 hidden max-h-48 overflow-y-auto">
+          <label class="block px-4 py-2 hover:bg-blue-50">
+            <input type="checkbox" value="WiFi" onchange="updateAmenities(this)" class="mr-2"> WiFi
+          </label>
+          <label class="block px-4 py-2 hover:bg-blue-50">
+            <input type="checkbox" value="AC" onchange="updateAmenities(this)" class="mr-2"> AC
+          </label>
+          <label class="block px-4 py-2 hover:bg-blue-50">
+            <input type="checkbox" value="Geyser" onchange="updateAmenities(this)" class="mr-2"> Geyser
+          </label>
+          <label class="block px-4 py-2 hover:bg-blue-50">
+            <input type="checkbox" value="Table" onchange="updateAmenities(this)" class="mr-2"> Table
+          </label>
+          <label class="block px-4 py-2 hover:bg-blue-50">
+            <input type="checkbox" value="Chair" onchange="updateAmenities(this)" class="mr-2"> Chair
+          </label>
+        </div>
+      </div>
+
+      <!-- Hidden input to submit selected amenities -->
+      <input type="hidden" name="amenities" id="amenities-input">
+
       <input type="date" class="w-full border p-3 rounded-lg" required>
 
       <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">
@@ -27,6 +55,31 @@
       </button>
     </form>
   </div>
+
+  <script>
+    const dropdown = document.getElementById("dropdown-menu");
+    const selectedDisplay = document.getElementById("selected-amenities");
+    const amenitiesInput = document.getElementById("amenities-input");
+
+    function toggleDropdown() {
+      dropdown.classList.toggle("hidden");
+    }
+
+    function updateAmenities(checkbox) {
+      const checkedBoxes = dropdown.querySelectorAll("input[type='checkbox']:checked");
+      const selected = Array.from(checkedBoxes).map(cb => cb.value);
+      selectedDisplay.innerText = selected.length ? selected.join(", ") : "Select Amenities";
+      amenitiesInput.value = selected.join(",");
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function(event) {
+      const isClickInside = dropdown.parentNode.contains(event.target);
+      if (!isClickInside) {
+        dropdown.classList.add("hidden");
+      }
+    });
+  </script>
 
 </body>
 </html>
