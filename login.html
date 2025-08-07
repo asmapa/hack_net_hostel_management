@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hostel Allocation - Login</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-dRhmAkl+Zl3Q+GmFD9J+kmf/F9e3J+J61y2m0sikBuqz+Ge8j7lo4RMK5iBr+8CEV1AEpE1OYqD58s5hWvhQQg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <style>
     body {
       background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
@@ -25,21 +29,21 @@
 <body class="min-h-screen flex items-center justify-center text-white">
   <div class="glass max-w-md w-full p-8 shadow-lg">
     <div class="flex justify-between mb-6">
-      <span class="text-lg font-semibold text-white border-b-2 border-white">Login</span>
+      <span class="text-lg font-semibold border-b-2 border-white">Login</span>
       <a href="signup.html" class="text-lg font-semibold text-gray-200 hover:text-white">Sign Up</a>
     </div>
 
     <!-- Login Form -->
-    <form class="space-y-4">
+    <form id="loginForm" class="space-y-4" onsubmit="return validateForm()">
       <div>
-        <label class="block mb-1">Email / Student ID</label>
-        <input type="text" placeholder="Enter Email or ID" required
+        <label class="block mb-1">Email</label>
+        <input id="email" type="email" placeholder="Enter Email" required
           class="w-full px-4 py-2 rounded-lg bg-white/20 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white" />
       </div>
 
       <div>
         <label class="block mb-1">Password</label>
-        <input type="password" placeholder="Enter Password" required
+        <input id="password" type="password" placeholder="Enter Password" required
           class="w-full px-4 py-2 rounded-lg bg-white/20 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white" />
       </div>
 
@@ -52,18 +56,44 @@
         LOGIN
       </button>
 
-      <div class="text-center mt-4">
+      <!-- Social Icons -->
+      <div class="text-center mt-6">
         <span class="text-sm">Or login with</span>
-        <div class="flex justify-center gap-4 mt-2">
-          <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google" class="w-6 h-6 cursor-pointer" />
-          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"
-            class="w-6 h-6 cursor-pointer" />
-          <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"
-            class="w-6 h-6 cursor-pointer" />
+        <div class="flex justify-center gap-4 mt-2 text-white text-xl">
+          <a href="#" title="Login with Google"><i class="fab fa-google hover:text-red-400"></i></a>
+          <a href="#" title="Login with Facebook"><i class="fab fa-facebook-f hover:text-blue-500"></i></a>
+          <a href="#" title="Login with Twitter"><i class="fab fa-twitter hover:text-sky-400"></i></a>
         </div>
       </div>
     </form>
   </div>
+
+  <!-- JavaScript for validation -->
+  <script>
+  function validateForm() {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    const passwordPattern = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+    if (!emailPattern.test(email)) {
+      alert("Please enter a valid email address.");
+      return false;
+    }
+
+    if (!passwordPattern.test(password)) {
+      alert("Password must be at least 8 characters long, contain at least one uppercase letter and one number.");
+      return false;
+    }
+
+    // ✅ Redirect on successful login
+    alert("Login successful!");
+    window.location.href = "student/student_dashboard.html";
+    return false; // prevent form submission
+  }
+</script>
+
 </body>
 
 </html>
