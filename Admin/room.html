@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel - Hostel Optimizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --primary: #003366;
+      --secondary: #0059b3;
+      --accent: #cce6ff;
+      --light: #f4f9ff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--light);
+      color: #333;
+    }
+
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 25px 40px;
+      text-align: center;
+      font-size: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .admin-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .admin-nav button {
+      padding: 12px 24px;
+      background: var(--secondary);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .admin-nav button:hover {
+      background: #004080;
+    }
+
+    .section {
+      display: none;
+      max-width: 700px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .section h2 {
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .room-subnav {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .room-subnav button {
+      padding: 8px 16px;
+      border: 2px solid var(--secondary);
+      background: white;
+      color: var(--secondary);
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .room-subnav button:hover {
+      background: var(--accent);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      background: var(--primary);
+      color: white;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 600px) {
+      .admin-nav {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    Admin Panel - Hostel Allocation Optimizer
+  </header>
+
+  <!-- Admin Navigation -->
+  <div class="admin-nav">
+    <button onclick="showSection('room')">Room</button>
+    <button onclick="showSection('student')">Student</button>
+    <button onclick="showSection('approval')">Approval / Rejected</button>
+    <button onclick="showSection('transfer')">Transfer Room</button>
+    <button onclick="showSection('assignment')">Assignment</button>
+  </div>
+
+  <!-- Room Management -->
+  <div class="section" id="roomSection">
+    <h2>Room Management</h2>
+    <div class="room-subnav">
+      <button onclick="showRoomForm('add')">Add Room</button>
+      <button onclick="showRoomForm('update')">Update Room</button>
+      <button onclick="showRoomForm('delete')">Delete Room</button>
+    </div>
+
+    <!-- Add Room -->
+    <div id="addRoom" class="room-form">
+      <form>
+        <label>Room Number</label>
+        <input type="text" placeholder="101" required>
+
+        <label>Room Type</label>
+        <input type="text" placeholder="Single/Double">
+
+        <label>Capacity</label>
+        <input type="number" placeholder="2">
+
+        <label>Occupied Students</label>
+        <input type="number" placeholder="0">
+
+        <label>Amenities</label>
+        <input type="text" placeholder="Fan, Table, WiFi">
+
+        <label>Mess Bill</label>
+        <input type="number" placeholder="2500">
+      </form>
+    </div>
+
+    <!-- Update Room -->
+    <div id="updateRoom" class="room-form" style="display:none;">
+      <form>
+        <label>Room Number</label>
+        <input type="text" placeholder="101" required>
+
+        <label>New Capacity</label>
+        <input type="number" placeholder="3">
+
+        <label>Updated Amenities</label>
+        <input type="text" placeholder="Fan, AC, Table">
+
+        <label>New Mess Bill</label>
+        <input type="number" placeholder="2700">
+      </form>
+    </div>
+
+    <!-- Delete Room -->
+    <div id="deleteRoom" class="room-form" style="display:none;">
+      <form>
+        <label>Room Number</label>
+        <input type="text" placeholder="101" required>
+      </form>
+    </div>
+  </div>
+
+  <!-- Student Section -->
+  <div class="section" id="studentSection">
+    <h2>Student Management</h2>
+    <p>Feature under development...</p>
+  </div>
+
+  <!-- Approval Section -->
+  <div class="section" id="approvalSection">
+    <h2>Approval / Rejected</h2>
+    <p>Feature under development...</p>
+  </div>
+
+  <!-- Transfer Section -->
+  <div class="section" id="transferSection">
+    <h2>Transfer Room</h2>
+    <p>Feature under development...</p>
+  </div>
+
+  <!-- Assignment Section -->
+  <div class="section" id="assignmentSection">
+    <h2>Room Assignment</h2>
+    <p>Feature under development...</p>
+  </div>
+
+  <footer>
+    &copy; 2025 HostelEase | Designed by [Your Name]
+  </footer>
+
+  <script>
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(sec => sec.style.display = 'none');
+      document.getElementById(sectionId + 'Section').style.display = 'block';
+    }
+
+    function showRoomForm(type) {
+      document.getElementById("addRoom").style.display = "none";
+      document.getElementById("updateRoom").style.display = "none";
+      document.getElementById("deleteRoom").style.display = "none";
+      document.getElementById(type + "Room").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
